@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+resource/message.csv
 .idea/
 
 # C extensions
