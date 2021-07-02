@@ -3,7 +3,7 @@
 """
 @author:zhengaihua
 @E-mail:zhengaihua@jd.com
-@file: re_test.py
+@file: test_re.py
 @time: 2021/7/1 17:28
 @desc: 正则表达式
 @url: https://docs.python.org/zh-cn/3/library/re.html
@@ -190,5 +190,22 @@ def re_split():
     print(re_list)
 
 
+def name():
+    # sms = "【HIDance舞蹈】尊敬的客户，2021-05-20的课程：芭蕾四级班已签到，本次划课2.00课时，剩余通用课时:29.50课时，剩余总课时通用课时：29.50，一对一：0.00，一对二：1.00。"
+    sms = "【HIDance舞蹈】尊敬的客户，2021-06-28的课程：一对一已签到，本次划课1.00课时，剩余一对一:16.00课时，剩余总课时通用课时：11.00，一对一：16.00，一对二：17.00。"
+    pattern = re.compile("尊敬的客户，(?P<date>.*)的课程：(?P<category>.*)已签到，本次划课(?P<subtract>.*)课时，"
+                         "剩余(?P<category_>.*):(?P<category_left>.*)课时，剩余总课时通用课时：(?P<sum>.*)，一对一：(?P<single>.*)，一对二：(?P<double>.*)。")
+    match_obj = pattern.search(sms)
+    print(match_obj.group("date"))
+    print(match_obj.group("category"))
+    print(match_obj.group("subtract"))
+    print(match_obj.group("category_"))
+    print(match_obj.group("category_left"))
+    print(match_obj.group("sum"))
+    print(match_obj.group("single"))
+    print(match_obj.group("double"))
+    print(match_obj.groups())
+
+
 if __name__ == '__main__':
-    re_split()
+    name()
